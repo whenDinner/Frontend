@@ -17,23 +17,7 @@ export default function Home({ size }: GlobalProps) {
         </Items>
       </Main>
 
-      <MenuComponents>
-        <div>
-          <Link href={"/outgo"}>
-            <div>OutGo</div>
-          </Link>
-        </div>
-        <div>
-          <Link href={"/board"}>
-            <div>게시판</div>
-          </Link>
-        </div>
-        <div>
-          <Link href={"/system"}>
-            <div>system</div>
-          </Link>
-        </div>
-      </MenuComponents>
+      <MenuComponents />
     </div>
   )    
 }

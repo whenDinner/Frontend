@@ -15,6 +15,11 @@ export default function GlobalReducers(state: GlobalProps, event: GlobalAction) 
         ...state,
         user: event.data
       }
+    case "tab":
+      return {
+        ...state,
+        boolean: event.boolean
+      }
     default:
       return {
         ...state

@@ -4,9 +4,11 @@ import { useRouter } from "next/router"
 import React, { useState } from "react"
 import styled, { keyframes } from "styled-components"
 
-export default function MenuComponents({ size }: GlobalProps) {
-  const [tab, setTab] = useState("tab normal")
-  const router = useRouter();
+export default function MenuComponents({ size, tab, update }: GlobalProps) {
+  function setTab(text: string) {
+    update({ type: "tab", tab: text })
+  }
+
   return (
     <>
       <Nav>

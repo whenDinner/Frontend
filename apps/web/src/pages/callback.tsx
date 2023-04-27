@@ -4,7 +4,7 @@ import { GlobalProps } from "@/utils/interface";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-export default function CallBack({ size }: GlobalProps) {
+export default function CallBack({ size, update }: GlobalProps) {
   const router = useRouter();
 
   async function callBackFetch() {
@@ -27,7 +27,7 @@ export default function CallBack({ size }: GlobalProps) {
 
   return (
     <div>
-      <MenuComponents size={size} />
+      <MenuComponents size={size} update={update} />
     </div>
   )
 

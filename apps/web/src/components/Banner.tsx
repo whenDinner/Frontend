@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function Banner() {
   return (
     <Body>
-      <Image src="assets/gisuksa.jpeg" alt="Banner"></Image>
+      <Image src="/assets/gisuksa.jpeg" alt="Banner"></Image>
     </Body>
   )
 }

@@ -10,6 +10,11 @@ export default function GlobalReducers(state: GlobalProps, event: GlobalAction) 
           height: event.height
         },
       }
+    case "getUser":
+      return {
+        ...state,
+        user: event.data
+      }
     default:
       return {
         ...state

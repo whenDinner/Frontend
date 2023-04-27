@@ -1,20 +1,37 @@
-interface windowSize {
+interface WindowSize {
   width: number,
   height: number
 }
 
+interface UserData {
+  class: number
+  exp: number
+  fullname: string
+  gender: "M" | "F"
+  grade: number
+  iat: number
+  login: string
+  nickname: string
+  number: number
+  roomNumber: string
+  student_id: string
+  type: 0 | 1 | 2 | 3
+} 
+
 export interface GlobalProps {
-  size: windowSize
+  size: WindowSize,
+  user: UserData
 }
 
 export type GlobalAction =
   | { type: "reSizeEvent", width: number, height: number }
+  | { type: "getUser", data: UserData }
 
 export interface ItemComponentsProps {
   imagePath: string,
   href: string,
   title: string,
-  size: windowSize
+  size: WindowSize
 }
 
 export interface ErrorComponentsProps { 

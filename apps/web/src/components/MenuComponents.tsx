@@ -100,6 +100,7 @@ const Nav = styled.nav`
   width: 100%;
   height: 70px;
   background-color: #fff;
+  color: rgb(0,113,182);
 
   box-shadow: 0 0 5px 0 #19191977;
 
@@ -110,7 +111,7 @@ const Nav = styled.nav`
   div.tab {
     width: 60px;
     height: 60px;
-    background-image: url(symbol-only.png);
+    background-image: url(assets/symbol-only.png);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
@@ -157,7 +158,9 @@ const Tab = styled.div`
     font-family: 'Sriracha', cursive;
     font-size: 32px;
     font-weight: 700;
+    color: rgb(0,113,182);
     border-bottom: 1px solid #313133;
+    padding-bottom: 10px;
     margin-bottom: 20px;
     text-align: left;
   }

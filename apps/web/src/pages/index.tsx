@@ -3,12 +3,12 @@ import styled from "styled-components";
 import Banner from "@/components/Banner";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size, user }: GlobalProps) {
+export default function Home({ size, user, tab, update }: GlobalProps) {
   return (
     <div>
-      <Banner />
+      <Banner size={size} tab={tab} update={update} />
 
-      <MenuComponents size={size} />
+      <MenuComponents size={size} tab={tab} update={update} />
     </div>
   )    
 }

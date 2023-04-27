@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       student_id: "",
       type: 0
     },
-    tab: false
+    tab: "tab normal"
   })
 
   function handleResize() {
@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Head />
 
-      <Component {...pageProps} size={event.size} user={event.user} />
+      <Component {...pageProps} size={event.size} user={event.user} tab={event.tab} update={update} />
     </>
     )
 }

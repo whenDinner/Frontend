@@ -1,7 +1,7 @@
 import Head from "@/components/nextHead";
 import GlobalReducers from "@/modules/GlobalReducers";
 import { GlobalStyle } from "@/styles/globals";
-import { getCookie } from "@/utils/cookies";
+import { getCookie, removeCookie } from "@/utils/cookies";
 import axios from "axios";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -13,6 +13,20 @@ export default function App({ Component, pageProps }: AppProps) {
     size: {
       width: 0, 
       height: 0
+    },
+    user: {
+      class: 0,
+      exp: 0,
+      fullname: "",
+      gender: "M",
+      grade: 0,
+      iat: 0,
+      login: "",
+      nickname: "",
+      number: 0,
+      roomNumber: "",
+      student_id: "",
+      type: 0
     }
   })
 
@@ -29,8 +43,21 @@ export default function App({ Component, pageProps }: AppProps) {
         }).then((res) => {
           return router.push(res.data.data)
         })
+        .catch(err => {
+          console.error(err)
+        })
       } else {
-        
+        await axios(process.env.NEXT_PUBLIC_BASE_URL + '/api/account/verify', {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${getCookie('GBSW_SESSION')}`
+          }
+        })
+        .then((res) => update({ type: 'getUser', data: res.data.token }))
+        .catch((err) => {
+          removeCookie('GBSW_SESSION');
+          router.reload();
+        })
       }
     }
   }
@@ -46,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Head />
 
-      <Component {...pageProps} size={event.size} />
+      <Component {...pageProps} size={event.size} user={event.user} />
     </>
     )
 }

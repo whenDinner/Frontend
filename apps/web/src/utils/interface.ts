@@ -1,3 +1,5 @@
+import { Dispatch } from "react"
+
 interface WindowSize {
   width: number,
   height: number
@@ -20,12 +22,15 @@ interface UserData {
 
 export interface GlobalProps {
   size: WindowSize,
-  user: UserData
+  user?: UserData,
+  tab?: boolean,
+  update?: Dispatch<GlobalAction>
 }
 
 export type GlobalAction =
   | { type: "reSizeEvent", width: number, height: number }
   | { type: "getUser", data: UserData }
+  | { type: "tab", boolean: boolean }
 
 export interface ItemComponentsProps {
   imagePath: string,

@@ -2,10 +2,10 @@ import MenuComponents from "@/components/MenuComponents";
 import styled from "styled-components";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size }: GlobalProps) {
+export default function Home({ size, update }: GlobalProps) {
   return (
     <div>
-      <MenuComponents size={size} />
+      <MenuComponents size={size} update={update}/>
       <ErrorTitle>
         <h1>{"¯\\_(ツ)_/¯"}</h1>
         <h1>not found</h1>

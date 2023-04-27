@@ -1,23 +1,14 @@
 import MenuComponents from "@/components/MenuComponents";
-import Link from "next/link";
 import styled from "styled-components";
 import Banner from "@/components/Banner";
-import ItemComponents from "@/components/ItemComponents";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size }: GlobalProps) {
+export default function Home({ size, user }: GlobalProps) {
   return (
     <div>
       <Banner />
-      <Main>
-        <Items>
-          <ItemComponents size={size} title={"OutGo"} imagePath={"symbol-only.png"} href={"/outgo"} />
-          <ItemComponents size={size} title={"게시판"} imagePath={"symbol-only.png"} href={"/board"} />
-          <ItemComponents size={size} title={"system"} imagePath={"symbol-only.png"} href={"/system"} />
-        </Items>
-      </Main>
 
-      <MenuComponents />
+      <MenuComponents size={size} />
     </div>
   )    
 }

@@ -1,9 +1,10 @@
+import { GlobalProps } from "@/utils/interface"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { useState } from "react"
 import styled, { keyframes } from "styled-components"
 
-export default function MenuComponents() {
+export default function MenuComponents({ size }: GlobalProps) {
   const [tab, setTab] = useState("tab normal")
   const router = useRouter();
   return (
@@ -13,7 +14,7 @@ export default function MenuComponents() {
           <h1>whenDinner</h1>
         </Link>
         <div style={{ display: "flex"}}>
-          <div className={tab} onClick={() => setTab(tab === "tab on" ? "tab off" : "tab on")} />
+          <div className={size.width >= 1040 ? tab : "tab off"} onClick={() => setTab(tab === "tab on" ? "tab off" : "tab on")} />
         </div>
       </Nav>
       <div style={{ width: "100%", height: "70px", zIndex: "-1" }}></div>
@@ -22,24 +23,7 @@ export default function MenuComponents() {
           <h1>whenDinner</h1>
         </Link>
         <TabList>
-        <div>
-          <Link href={router.asPath === "/outgo" ? "" : "/outgo"} passHref>
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M120 546V216h330v330H120Zm0 390V606h330v330H120Zm390-390V216h330v330H510Zm0 390V606h330v330H510ZM180 486h210V276H180v210Zm390 0h210V276H570v210Zm0 390h210V666H570v210Zm-390 0h210V666H180v210Zm390-390Zm0 180Zm-180 0Zm0-180Z"/></svg>
-            <div>OutGo</div>
-          </Link>
-        </div>
-        <div>
-          <Link href={router.asPath === "/board" ? "" : "/board"} passHref>
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M80 776V218q0-14 13-28t27-14h519q15 0 28 13.5t13 28.5v356q0 14-13 28t-28 14H240L80 776Zm201 40q-14 0-27.5-14T240 774v-98h500V336h100q14 0 27 14t13 29v596L721 816H281Zm339-580H140v395l75-75h405V236Zm-480 0v395-395Z"/></svg>
-            <div>게시판</div>
-          </Link>
-        </div>
-        <div>
-          <Link href={router.asPath === "/system" ? "" : "/system"} passHref>
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M207.858 624Q188 624 174 609.858q-14-14.141-14-34Q160 556 174.142 542q14.141-14 34-14Q228 528 242 542.142q14 14.141 14 34Q256 596 241.858 610q-14.141 14-34 14Zm272 0Q460 624 446 609.858q-14-14.141-14-34Q432 556 446.142 542q14.141-14 34-14Q500 528 514 542.142q14 14.141 14 34Q528 596 513.858 610q-14.141 14-34 14Zm272 0Q732 624 718 609.858q-14-14.141-14-34Q704 556 718.142 542q14.141-14 34-14Q772 528 786 542.142q14 14.141 14 34Q800 596 785.858 610q-14.141 14-34 14Z"/></svg>
-            <div>system</div>
-          </Link>
-        </div>
+          
         </TabList>
       </Tab>
     </>
@@ -111,7 +95,7 @@ const Nav = styled.nav`
   div.tab {
     width: 60px;
     height: 60px;
-    background-image: url(assets/symbol-only.png);
+    background-image: url(/assets/symbol-only.png);
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
@@ -139,6 +123,7 @@ const Nav = styled.nav`
 `
 
 const Tab = styled.div`
+  transition: all .35s;
   position: fixed;
   top: 0;
   z-index: 100;
@@ -150,7 +135,7 @@ const Tab = styled.div`
   background-color: white;
   box-shadow: 0 0 10px 0 #19191977;
   
-  padding-top: 38px;
+  padding-top: 28px;
   padding-left: 10px;
   padding-right: 10px;
   opacity: .94;
@@ -171,6 +156,12 @@ const Tab = styled.div`
 
   &.off {
     animation: ${rightToLeft} .35s forwards;
+  }
+
+  @media (min-width: 1040px) {
+    left: -23%;
+
+    width: 23%;
   }
 `
 

@@ -27,7 +27,8 @@ export default function App({ Component, pageProps }: AppProps) {
       roomNumber: "",
       student_id: "",
       type: 0
-    }
+    },
+    tab: "tab normal"
   })
 
   function handleResize() {
@@ -53,7 +54,13 @@ export default function App({ Component, pageProps }: AppProps) {
             Authorization: `Bearer ${getCookie('GBSW_SESSION')}`
           }
         })
-        .then((res) => update({ type: 'getUser', data: res.data.token }))
+        .then((res) => {
+          if (!res.data.isReturn) {
+            if (router.asPath.includes('/outgo/setectReturn')) {
+
+            }
+          }
+        })
         .catch((err) => {
           removeCookie('GBSW_SESSION');
           router.reload();
@@ -73,7 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Head />
 
-      <Component {...pageProps} size={event.size} user={event.user} />
+      <Component {...pageProps} size={event.size} user={event.user} tab={event.tab} update={update} />
     </>
     )
 }

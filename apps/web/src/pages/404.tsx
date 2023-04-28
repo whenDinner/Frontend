@@ -2,10 +2,10 @@ import MenuComponents from "@/components/MenuComponents";
 import styled from "styled-components";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size }: GlobalProps) {
+export default function Home({ size, update }: GlobalProps) {
   return (
     <div>
-      <MenuComponents />
+      <MenuComponents size={size} update={update}/>
       <ErrorTitle>
         <h1>{"¯\\_(ツ)_/¯"}</h1>
         <h1>not found</h1>
@@ -22,7 +22,7 @@ const ErrorTitle = styled.div`
   left: 50%;
   transform: translate(-50%,-50%);
   > h1 {
-    background: url(/gisuksa.jpeg) center no-repeat;
+    background: url(/assets/gisuksa.jpeg) center no-repeat;
   
     text-align: center;
     font-weight: 700;

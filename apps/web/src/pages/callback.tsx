@@ -1,9 +1,10 @@
 import MenuComponents from "@/components/MenuComponents";
 import { getCookie, setCookie } from "@/utils/cookies";
+import { GlobalProps } from "@/utils/interface";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-export default function CallBack() {
+export default function CallBack({ size, update }: GlobalProps) {
   const router = useRouter();
 
   async function callBackFetch() {
@@ -26,7 +27,7 @@ export default function CallBack() {
 
   return (
     <div>
-      <MenuComponents />
+      <MenuComponents size={size} update={update} />
     </div>
   )
 

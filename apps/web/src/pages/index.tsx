@@ -1,43 +1,58 @@
 import MenuComponents from "@/components/MenuComponents";
-import Link from "next/link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Banner from "@/components/Banner";
-import ItemComponents from "@/components/ItemComponents";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size }: GlobalProps) {
+export default function Home({ size, user, tab, update }: GlobalProps) {
   return (
     <div>
-      <Banner />
+      <Banner size={size} tab={tab} update={update} />
       <Main>
-        <Items>
-          <ItemComponents size={size} title={"OutGo"} imagePath={"symbol-only.png"} href={"/outgo"} />
-          <ItemComponents size={size} title={"게시판"} imagePath={"symbol-only.png"} href={"/board"} />
-          <ItemComponents size={size} title={"system"} imagePath={"symbol-only.png"} href={"/system"} />
-        </Items>
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <GBSW src="/assets/gbsw_image/symbol-only.png" />
+          <h1 style={{ textAlign: 'center' }}>정심관</h1>
+        </div>
       </Main>
-
-      <MenuComponents />
+      <MenuComponents size={size} tab={tab} update={update} />
     </div>
   )    
 }
 
-const Main = styled.main`
-  > h1 {
-    font-size: 21px;
-    font-weight: 900;
-    border-bottom: 1px solid black;
-    padding-bottom: 14px;
+const fade = keyframes`
+  0% {
+    opacity: .1;
+  }
+
+  100% {
+    opacity: .9;
   }
 `
 
-const Items = styled.div`
-  display: flex;
+const Main = styled.main`
   position: absolute;
-  width: 100%;
-  bottom: 10%;
-  @media (max-width: 640px) {
-    display: block;
-    width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 70%;
+  background-color: white;
+  height: auto;
+
+  opacity: .1;
+  animation: ${fade} .4s forwards;
+
+  > div {
+    padding: 20px;
   }
+`
+
+const GBSW = styled.img`
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%); 
+
+  width: 80px;
+  height: 80px;
+
+  margin-bottom: 20px;
 `

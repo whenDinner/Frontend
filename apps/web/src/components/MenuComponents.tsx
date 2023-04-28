@@ -34,12 +34,14 @@ export default function MenuComponents({ size, tab, update }: GlobalProps) {
         </Link>
         <TabList>
           <Item>
-            <div>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 10.05C19 10.05 19 10.02 19 10C19 6.69 16.31 4 13 4C10.36 4 8.13 5.7 7.32 8.07C7.05 8.03 6.78 8 6.5 8C3.46 8 1 10.46 1 13.5C1 16.54 3.46 19 6.5 19H18.5C20.99 19 23 16.98 23 14.5C23 12.19 21.25 10.3 19 10.05Z" fill="#88BFFF"/>
-              </svg>
-              <h1>정심관</h1>
-            </div>
+            <Link href={"/out"}>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 10.05C19 10.05 19 10.02 19 10C19 6.69 16.31 4 13 4C10.36 4 8.13 5.7 7.32 8.07C7.05 8.03 6.78 8 6.5 8C3.46 8 1 10.46 1 13.5C1 16.54 3.46 19 6.5 19H18.5C20.99 19 23 16.98 23 14.5C23 12.19 21.25 10.3 19 10.05Z" fill="#88BFFF"/>
+                </svg>
+                <h1>정심관</h1>
+              </div>
+            </Link>
             <div>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.5 3H4.5C3.94772 3 3.5 3.44772 3.5 4V7C3.5 7.55228 3.94772 8 4.5 8H19.5C20.0523 8 20.5 7.55228 20.5 7V4C20.5 3.44772 20.0523 3 19.5 3Z" fill="#707070"/>

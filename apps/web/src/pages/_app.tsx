@@ -30,14 +30,14 @@ export default function App({ Component, pageProps }: AppProps) {
     },
     tab: "tab normal"
   })
-
+  
   function handleResize() {
     update({ type: 'reSizeEvent', width: window.innerWidth, height: window.innerHeight })
   }
-
+  
   async function tokenCheck() {
     const token = getCookie('GBSW_SESSION')
-    if (!router.asPath.includes('/callback')) {
+    if (!router.asPath.includes('/callback') && router.asPath.includes('/admin')) {
       if (!token) {
         await axios(process.env.NEXT_PUBLIC_BASE_URL + '/api/account/getLogin', {
           method: "GET"
@@ -45,26 +45,26 @@ export default function App({ Component, pageProps }: AppProps) {
           return router.push(res.data.data)
         })
         .catch(err => {
-          console.error(err)
+          router.push('/')
         })
       } else {
-        await axios(process.env.NEXT_PUBLIC_BASE_URL + '/api/account/verify', {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${getCookie('GBSW_SESSION')}`
-          }
-        })
-        .then((res) => {
-          if (!res.data.isReturn) {
-            if (router.asPath.includes('/outgo/setectReturn')) {
-
+        if (router.asPath.includes('/admin')) {
+          await axios(process.env.NEXT_PUBLIC_BASE_URL + '/api/account/verify', {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${getCookie('GBSW_SESSION')}`
             }
-          }
-        })
-        .catch((err) => {
-          removeCookie('GBSW_SESSION');
-          router.reload();
-        })
+          })
+          .then((res) => {
+            if (res.data.token.type !== 2) {
+              router.push('/')
+            }
+          })
+          .catch((err) => {
+            removeCookie('GBSW_SESSION');
+            router.reload();
+          })
+        }
       }
     }
   }

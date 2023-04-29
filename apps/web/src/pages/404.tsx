@@ -2,15 +2,15 @@ import MenuComponents from "@/components/MenuComponents";
 import styled from "styled-components";
 import { GlobalProps } from "@/utils/interface";
 
-export default function Home({ size, update }: GlobalProps) {
+export default function Home({ size, tab, update }: GlobalProps) {
   return (
     <div>
-      <MenuComponents size={size} update={update}/>
       <ErrorTitle>
         <h1>{"¯\\_(ツ)_/¯"}</h1>
         <h1>not found</h1>
         <p>혹시 모르니까 다음에 연결해보죠?</p>
       </ErrorTitle>
+      <MenuComponents size={size} tab={tab} update={update}/>
     </div>
   )    
 }
@@ -22,7 +22,7 @@ const ErrorTitle = styled.div`
   left: 50%;
   transform: translate(-50%,-50%);
   > h1 {
-    background: url(/assets/gisuksa.jpeg) center no-repeat;
+    background: url(/assets/gbsw_image/board1619183202478.jpeg) center no-repeat;
   
     text-align: center;
     font-weight: 700;

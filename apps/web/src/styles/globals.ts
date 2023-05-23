@@ -14,10 +14,11 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     transition: all .35s;
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
   
   body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -33,13 +34,5 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  .sm-btn {
-    width: 60px;
-    height: 60px;
-    padding: 20px;
-    border-radius: 50%;
-    border: 1px solid black;
   }
 `

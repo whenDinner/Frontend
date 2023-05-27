@@ -20,7 +20,7 @@ export default function Nav({ update }: { update: Dispatch<SetStateAction<TabTyp
         <div>
           <ul>
             <li>
-              <a href="https://gbsw.hs.kr"><img src="assets/gbsw_image/symbol-only.png" /></a>
+              <a href="https://gbsw.hs.kr"><img src="/assets/gbsw_image/symbol-only.png" /></a>
             </li>
           </ul>
         </div>

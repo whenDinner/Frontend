@@ -12,15 +12,23 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "@types/styled-components": "^5.1.26",
+    "axios": "^1.4.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "moment": "^2.29.4",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-paginate": "^8.2.0",
     "styled-components": "^5.3.10",
     "styled-reset": "^4.4.6",
+    "suneditor": "^2.45.1",
+    "suneditor-react": "^3.6.1",
+    "sweetalert2": "^11.7.12",
     "swr": "^2.1.5",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "xss": "^1.0.14"
   }
 }

@@ -136,7 +136,7 @@ export default function Notice() {
       </form>
 
       {items ? items.map((value: any, index) => (
-        <Card>
+        <Card key={index}>
           <Link href={`/community/post/${value.id}`}>
             <Card title={value.title}>
               createdAt: {value.createdAt}

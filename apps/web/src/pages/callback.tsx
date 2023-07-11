@@ -20,7 +20,7 @@ const callbackFetcher = async (path: string) => {
 
 export default function Callback() {
   const router = useRouter();
-  const { data } = useSWR(`http://localhost:3001/api/account/callback?id_token=${router.query.id_token}&state=${router.query.state}`, callbackFetcher)
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_BASE_URL}/api/account/callback?id_token=${router.query.id_token}&state=${router.query.state}`, callbackFetcher)
 
   return (
     <Container>

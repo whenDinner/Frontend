@@ -5,7 +5,6 @@ import { getCookie } from "@/utils/cookies";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "@/components/Pagination";
-import styled from "styled-components";
 import Link from "next/link";
 import { QuickResponse } from "@/utils/interfaces";
 
@@ -36,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     getQuickResponse();
-  }, [currentpage])
+  }, [currentpage, getQuickResponse]);
 
   return (
     <Container>
@@ -48,7 +47,7 @@ export default function Home() {
       </Card>
       
       {items.map((value: QuickResponse, index: number) => (
-        <Link href={`/qr/${value.uuid}`}>
+        <Link href={`/qr/${value.uuid}`} key={index}>
           <Card key={index} title={value.name}>
             <li>uuid: {value.uuid}</li><br/>
             <Button type="button" text={value.action} color="#5d87ff" onClick={undefined} fontColor="#fff"></Button>

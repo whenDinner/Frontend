@@ -1,8 +1,7 @@
 import Card from "@/components/card";
 import Container from "@/components/container";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import dynamic from "next/dynamic";
 import Button from "@/components/button";
 import axios from "axios";
 import { getCookie } from "@/utils/cookies";
@@ -10,10 +9,6 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import xss from "xss";
 import moment from "moment";
-
-const SunEditor = dynamic(() => import("suneditor-react"), {
-  ssr: false,
-});
 
 export default function Notice() {
   const router = useRouter();
@@ -55,7 +50,15 @@ export default function Notice() {
       method: 'get',
     }).then((res) => {
       setItems(res.data.post)
-    }).catch((err) => console.error(err))
+    }).catch((err) => {
+      Swal.fire({
+        title: err.response.data.message,
+        icon: 'error',
+        didClose: () => {
+          router.push('/community/notice')
+        }
+      })
+    })
   }
   
   useEffect(() => {

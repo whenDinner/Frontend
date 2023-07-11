@@ -25,7 +25,7 @@ export default function Notice() {
 
   useEffect(() => {
     getItems();
-  }, [router.isReady, getItems])
+  }, [router.isReady])
 
   return (
     <Container>

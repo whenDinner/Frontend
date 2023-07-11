@@ -37,7 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     getQuickResponse();
-  }, [currentpage, getQuickResponse])
+  }, [router.isReady, currentpage])
 
   return (
     <Container>

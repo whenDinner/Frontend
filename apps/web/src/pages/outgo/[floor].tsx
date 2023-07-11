@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     getUser();
-  }, [currentpage])
+  }, [currentpage, getUser]);
 
   if ((router.query.gender !== 'M' && router.query.gender !== 'F') || (isNaN(parseInt(router.query.floor!.toString()))))
     return (
@@ -58,7 +58,7 @@ export default function Home() {
           <Button type="button" text="뒤로가기" color="#5d87ff" fontColor="#fff" onClick={undefined} />
         </div>
         {items && Object.values(items).map((value: any, index: number) => (
-          <Link href={`/outgo/user/${value.uuid}`}>
+          <Link href={`/outgo/user/${value.uuid}`} key={index}>
             <Card title={value.fullname}>
               <div>
                 <li>학번: {value.student_id}</li>

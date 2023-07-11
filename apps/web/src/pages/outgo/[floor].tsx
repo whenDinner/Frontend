@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     getUser();
-  }, [currentpage, getUser]);
+  }, [router.isReady, currentpage]);
 
   if ((router.query.gender !== 'M' && router.query.gender !== 'F') || (isNaN(parseInt(router.query.floor!.toString()))))
     return (

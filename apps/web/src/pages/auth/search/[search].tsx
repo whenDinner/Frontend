@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     getUser();
-  }, [currentpage])
+  }, [currentpage, getUser])
 
   if (!items)
     return (
@@ -59,7 +59,7 @@ export default function Home() {
           <Button type="button" text="뒤로가기" color="#5d87ff" fontColor="#fff" onClick={undefined} />
         </div>
         {items && Object.values(items).map((value: any, index: number) => (
-          <Card title={value.fullname}>
+          <Card title={value.fullname} key={index}>
             <div>
               <li>uuid: {value.uuid}</li>
               <br/>

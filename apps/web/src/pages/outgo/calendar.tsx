@@ -95,7 +95,7 @@ export default function Home() {
 
   useEffect(() => {
     getCalendar()
-  }, [router.isReady, getCalendar])
+  }, [router.isReady])
 
   return (
     <Container>

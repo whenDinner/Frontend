@@ -95,7 +95,7 @@ export default function Home() {
 
   useEffect(() => {
     getCalendar()
-  }, [])
+  }, [router.isReady, getCalendar])
 
   return (
     <Container>
@@ -131,7 +131,7 @@ export default function Home() {
       <Card title='잔류, 귀가 리스트'>
       <Button type="button" text="초기화" color="rgb(229, 44, 87)" fontColor="#fff" onClick={(e) => { e.preventDefault(); deleteSubmit() }}></Button>
         {calendar && Object.values(calendar).map((value: any, index: number) => (
-          <Link href={`/outgo/calendar/${value.uuid}`}>
+          <Link href={`/outgo/calendar/${value.uuid}`} key={index}>
             <Card title={value.type} key={index}>
               <ul style={{ color: 'black' }}>
                 <li>{value.uuid}</li><br/>

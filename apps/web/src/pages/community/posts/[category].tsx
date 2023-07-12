@@ -63,7 +63,7 @@ export default function Notice() {
 
   useEffect(() => {
     getItems();
-  }, [currentpage])
+  }, [router.isReady, currentpage])
 
   return (
     <Container>

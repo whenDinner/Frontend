@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const router = useRouter();
   const [items, setItems] = useState<any>()
-  
+
   async function getCalendar() {
     await axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/outgo/get/calendar?uuid=${router.query.uuid}`, {
       method: 'get'
@@ -29,10 +29,10 @@ export default function Home() {
       <Container>
         <Card title="ERROR!">
           <div>
-            사소한 에러가 있었나 보군요!<br/>
+            사소한 에러가 있었나 보군요!<br />
             아래 해결 방법을 사용해보실래요?
-            <br/><br/>
-            1. <Link href="/" passHref>홈으로 돌아가기</Link><br/>
+            <br /><br />
+            1. <Link href="/" passHref>홈으로 돌아가기</Link><br />
             2. 데이터가 없음
             3. 관리자에게 문의하기. (최태혁)
           </div>
@@ -47,12 +47,12 @@ export default function Home() {
         </div>
         <Card title={items.type}>
           <div>
-            <li>uuid: {items.uuid}</li><br/>
+            <li>uuid: {items.uuid}</li><br />
             <li>createdAt: {items.date}</li>
           </div>
-          <br/>
+          <br />
         </Card>
-        
+
       </Container>
     )
   }

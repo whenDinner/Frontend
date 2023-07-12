@@ -31,7 +31,7 @@ export default function Notice() {
     <Container>
       <Card title="카테고리 선택">
         {items ? items.map((value: any, index:number) => (
-          <Link href={`./posts/${value.value}`}>
+          <Link href={`./posts/${value.value}`} key={index}>
             <Card title={value.label} key={index}>
               <p style={{ color: 'black' }}>
                 게시글 갯수: {value.count}개

@@ -6,7 +6,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Home() {
-  const [search, setSearch] = useState('') 
+  const [search, setSearch] = useState('')
   return (
     <Container>
       <Card title="OAUTH 층 선택">

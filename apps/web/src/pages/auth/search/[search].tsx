@@ -13,7 +13,7 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0);
   const [currentpage, setCurrentpage] = useState<number>(0);
-  
+
   async function getUser() {
     await axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/account/search/users?offset=${currentpage}&limit=10&search=${router.query.search}`, {
       method: 'get',
@@ -35,17 +35,17 @@ export default function Home() {
 
   useEffect(() => {
     getUser();
-  }, [currentpage])
+  }, [router.isReady, currentpage])
 
   if (!items)
     return (
       <Container>
         <Card title="ERROR!">
           <div>
-            사소한 에러가 있었나 보군요!<br/>
+            사소한 에러가 있었나 보군요!<br />
             아래 해결 방법을 사용해보실래요?
-            <br/><br/>
-            1. <Link href="/" passHref>홈으로 돌아가기</Link><br/>
+            <br /><br />
+            1. <Link href="/" passHref>홈으로 돌아가기</Link><br />
             2. 데이터가 없음
             3. 관리자에게 문의하기. (최태혁)
           </div>
@@ -59,10 +59,10 @@ export default function Home() {
           <Button type="button" text="뒤로가기" color="#5d87ff" fontColor="#fff" onClick={undefined} />
         </div>
         {items && Object.values(items).map((value: any, index: number) => (
-          <Card title={value.fullname}>
+          <Card title={value.fullname} key={index}>
             <div>
               <li>uuid: {value.uuid}</li>
-              <br/>
+              <br />
               <li>학번: {value.student_id}</li>
               <li>성별: {value.gender === "M" ? "남자" : "여자"}</li>
               <li>학년: {value.grade}</li>
@@ -72,13 +72,10 @@ export default function Home() {
               <li>type: {value.type === 0 ? "교내 학생" : value.type === 1 ? "졸업생" : "관리자"}</li>
               <li>createdAt: {value.createdAt}</li>
             </div>
-            <Link href={`/auth/user/update?uuid=${value.uuid}`}>
-              <Button type="button" text="수정하기" color="#5d87ff" fontColor="#fff" onClick={undefined} />
-            </Link>
           </Card>
         ))}
 
-      <Pagination onPageChange={onPageChange} totalPages={Math.floor(total / 10)} currentPage={currentpage} />
+        <Pagination onPageChange={onPageChange} totalPages={Math.floor(total / 10)} currentPage={currentpage} />
 
       </Container>
     )

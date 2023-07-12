@@ -7,7 +7,7 @@ export default function Menu() {
   const [tab, setTab] = useState<TabType>("tab-on")
   return (
     <>
-      <Nav update={setTab}/>
+      <Nav update={setTab} />
       <Tab tab={tab} update={setTab} />
     </>
   )

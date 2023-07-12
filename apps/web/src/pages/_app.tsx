@@ -38,7 +38,7 @@ async function getLogin() {
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_BASE_URL}/api/account/verify`, fetcher)
-  
+
   if (error && (!router.asPath.includes('/account/login') && !router.asPath.includes('/account/signUp') && !router.asPath.includes('/callback'))) {
     return (
       <>
@@ -47,10 +47,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <Container>
           <Card title="Error!">
             <div>
-              사소한 에러가 있었나 보군요!<br/>
+              사소한 에러가 있었나 보군요!<br />
               아래 해결 방법을 사용해보실래요?
-              <br/><br/>
-              1. <a onClick={getLogin} style={{ cursor: 'pointer' }}>로그인</a><br/>
+              <br /><br />
+              1. <a onClick={getLogin} style={{ cursor: 'pointer' }}>로그인</a><br />
               2. 관리자에게 문의하기. (최태혁)
             </div>
           </Card>
@@ -60,11 +60,11 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   if (isLoading) {
-    return(
+    return (
       <>
         <Head />
         <Menu />
-        
+
       </>
     )
   } else {
@@ -73,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <GlobalStyle />
         <Head />
         <Menu />
-        <Component {...pageProps} />  
+        <Component {...pageProps} />
       </>
     )
   }

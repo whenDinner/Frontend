@@ -5,9 +5,9 @@ export default function Card(props: { title?: string, children: ReactNode }) {
   return (
     <CardBody>
       <Body>
-        {props.title ? 
+        {props.title ?
           <Title>{props.title}</Title>
-        :
+          :
           <></>
         }
         {props.children}

@@ -13,7 +13,7 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0);
   const [currentpage, setCurrentpage] = useState<number>(0);
-  
+
   async function getUser() {
     await axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/account/search/users?offset=${currentpage}&limit=10&search=${router.query.search}`, {
       method: 'get',
@@ -42,10 +42,10 @@ export default function Home() {
       <Container>
         <Card title="ERROR!">
           <div>
-            사소한 에러가 있었나 보군요!<br/>
+            사소한 에러가 있었나 보군요!<br />
             아래 해결 방법을 사용해보실래요?
-            <br/><br/>
-            1. <Link href="/" passHref>홈으로 돌아가기</Link><br/>
+            <br /><br />
+            1. <Link href="/" passHref>홈으로 돌아가기</Link><br />
             2. 데이터가 없음
             3. 관리자에게 문의하기. (최태혁)
           </div>
@@ -84,7 +84,7 @@ export default function Home() {
                     <Button type="button" text="외박" color={value.gs === 2 ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white" />
                     <Button type="button" text="귀가" color={value.gs === 3 ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white" />
                   </Card>
-                :
+                  :
                   <></>
                 }
                 <Card title="학생 위치">
@@ -96,7 +96,7 @@ export default function Home() {
           </>
         ))}
 
-      <Pagination onPageChange={onPageChange} totalPages={Math.floor(total / 10)} currentPage={currentpage} />
+        <Pagination onPageChange={onPageChange} totalPages={Math.floor(total / 10)} currentPage={currentpage} />
 
       </Container>
     )

@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 import styled from "styled-components"
 
 export default function Container(props: { children: ReactNode }) {
-  return(
+  return (
     <Body>
       {props.children}
     </Body>

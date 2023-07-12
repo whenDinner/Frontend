@@ -62,19 +62,19 @@ export default function Home() {
           </Card>
           {value.user.gs === 1 ?
             <Card title="외출">
-              <Button type="button" text="토요일" color={value.outgo.sat_pm ? "#5d87ff" : "#636366" } onClick={undefined} fontColor="white"></Button>
-              <Button type="button" text="일요일 오전" color={value.outgo.sun_am ? "#5d87ff" : "#636366" } onClick={undefined} fontColor="white"></Button>
-              <Button type="button" text="일요일 오후" color={value.outgo.sun_pm ? "#5d87ff" : "#636366" } onClick={undefined} fontColor="white"></Button>
+              <Button type="button" text="토요일" color={value.outgo.sat_pm ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white"></Button>
+              <Button type="button" text="일요일 오전" color={value.outgo.sun_am ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white"></Button>
+              <Button type="button" text="일요일 오후" color={value.outgo.sun_pm ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white"></Button>
             </Card>
-          :
+            :
             <></>
           }
           {value.user.gs === 2 ?
             <Card title="외박">
-              <Button type="button" text="금요일" color={value.outgo.fri_out ? "#5d87ff" : "#636366" } onClick={undefined} fontColor="white"></Button>
-              <Button type="button" text="토요일" color={value.outgo.sat_pm ? "#5d87ff" : "#636366" } onClick={undefined} fontColor="white"></Button>
+              <Button type="button" text="금요일" color={value.outgo.fri_out ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white"></Button>
+              <Button type="button" text="토요일" color={value.outgo.sat_pm ? "#5d87ff" : "#636366"} onClick={undefined} fontColor="white"></Button>
             </Card>
-          :
+            :
             <></>
           }
           <Card title="학생 위치">

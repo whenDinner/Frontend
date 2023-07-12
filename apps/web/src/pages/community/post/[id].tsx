@@ -1,8 +1,7 @@
 import Card from "@/components/card";
 import Container from "@/components/container";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import dynamic from "next/dynamic";
 import Button from "@/components/button";
 import axios from "axios";
 import { getCookie } from "@/utils/cookies";
@@ -11,13 +10,9 @@ import { useRouter } from "next/router";
 import xss from "xss";
 import moment from "moment";
 
-const SunEditor = dynamic(() => import("suneditor-react"), {
-  ssr: false,
-});
-
 export default function Notice() {
   const router = useRouter();
-  
+
   const [items, setItems] = useState<any>()
 
   const onSubmit = async () => {
@@ -30,24 +25,24 @@ export default function Notice() {
         id: router.query.id
       }
     })
-    .then(() => {
-      Swal.fire({
-        title: '게시글이 정상적으로 삭제되었습니다.',
-        icon: 'success',
-        didClose: () => {
-          router.reload()
-        }
+      .then(() => {
+        Swal.fire({
+          title: '게시글이 정상적으로 삭제되었습니다.',
+          icon: 'success',
+          didClose: () => {
+            router.reload()
+          }
+        })
       })
-    })
-    .catch((err) => {
-      Swal.fire({
-        title: err.response.data.message,
-        icon: 'error',
-        didClose: () => {
-          router.reload()
-        }
+      .catch((err) => {
+        Swal.fire({
+          title: err.response.data.message,
+          icon: 'error',
+          didClose: () => {
+            router.reload()
+          }
+        })
       })
-    })
   }
 
   async function getItems() {
@@ -55,23 +50,31 @@ export default function Notice() {
       method: 'get',
     }).then((res) => {
       setItems(res.data.post)
-    }).catch((err) => console.error(err))
+    }).catch((err) => {
+      Swal.fire({
+        title: err.response.data.message,
+        icon: 'error',
+        didClose: () => {
+          router.push('/community/notice')
+        }
+      })
+    })
   }
-  
+
   useEffect(() => {
     getItems();
   }, [router.isReady])
 
   return (
     <Container>
-      {items ? 
+      {items ?
         <Card title={items.title}>
           작성 날짜: {moment(items.createdAt).format('YYYY년 MM월 DD일 HH시 mm분 ss초')}
           <Card>
             <div dangerouslySetInnerHTML={{ __html: xss(items.content) }}></div>
           </Card>
         </Card>
-      : 
+        :
         <Card title={"Loading..."}>
         </Card>
       }

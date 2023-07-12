@@ -36,7 +36,7 @@ export default function Home() {
         text: Err.response.data.message,
         icon: 'error',
         didClose: () => {
-          router.reload()        
+          router.reload()
         }
       })
     })
@@ -49,16 +49,16 @@ export default function Home() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   async function uploadCalendar(e: FormEvent) {
     e.preventDefault();
-    if (!files[0]) 
+    if (!files[0])
       return Swal.fire({
         title: '파일을 올려주세요.',
-        text:'xlsx Error: required xlsx',
+        text: 'xlsx Error: required xlsx',
         icon: 'error'
       })
-    if (files[0].name.split('.')[files[0].name.split('.').length-1] !== 'xlsx' && files[0].name.split('.')[files[0].name.split('.').length-1] !== 'excel')
+    if (files[0].name.split('.')[files[0].name.split('.').length - 1] !== 'xlsx' && files[0].name.split('.')[files[0].name.split('.').length - 1] !== 'excel')
       return Swal.fire({
         title: '엑셀 파일만을 올려주세요.',
-        text:'xlsx Error: required xlsx',
+        text: 'xlsx Error: required xlsx',
         icon: 'error'
       })
     const formData = new FormData();
@@ -95,7 +95,7 @@ export default function Home() {
 
   useEffect(() => {
     getCalendar()
-  }, [])
+  }, [router.isReady])
 
   return (
     <Container>
@@ -111,14 +111,14 @@ export default function Home() {
                   <p>파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.</p>
                   <p>파일은 하나만 업로드 하세요.</p>
                 </>
-                
+
               )}
               {files.length > 0 && (
                 <ul>
-                  <br/>
+                  <br />
                   {files.map((file) => (
                     <>
-                      <li key={file.name}>{file.name}</li><br/>
+                      <li key={file.name}>{file.name}</li><br />
                     </>
                   ))}
                 </ul>
@@ -129,12 +129,12 @@ export default function Home() {
         </div>
       </Card>
       <Card title='잔류, 귀가 리스트'>
-      <Button type="button" text="초기화" color="rgb(229, 44, 87)" fontColor="#fff" onClick={(e) => { e.preventDefault(); deleteSubmit() }}></Button>
+        <Button type="button" text="초기화" color="rgb(229, 44, 87)" fontColor="#fff" onClick={(e) => { e.preventDefault(); deleteSubmit() }}></Button>
         {calendar && Object.values(calendar).map((value: any, index: number) => (
-          <Link href={`/outgo/calendar/${value.uuid}`}>
+          <Link href={`/outgo/calendar/${value.uuid}`} key={index}>
             <Card title={value.type} key={index}>
               <ul style={{ color: 'black' }}>
-                <li>{value.uuid}</li><br/>
+                <li>{value.uuid}</li><br />
                 <li>{moment(value.date).format('YYYY년 MM월 DD일')}</li>
               </ul>
             </Card>

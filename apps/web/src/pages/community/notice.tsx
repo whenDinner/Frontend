@@ -22,7 +22,7 @@ export default function Notice() {
   const editorRef = useRef<SunEditorCore>();
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  
+
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0);
   const [currentpage, setCurrentpage] = useState<number>(0);
@@ -49,21 +49,21 @@ export default function Notice() {
         type: '공지'
       }
     })
-    .then(() => {
-      Swal.fire({
-        title: '게시글이 정상적으로 작성되었습니다.',
-        icon: 'success',
-        didClose: () => {
-          router.reload()
-        }
+      .then(() => {
+        Swal.fire({
+          title: '게시글이 정상적으로 작성되었습니다.',
+          icon: 'success',
+          didClose: () => {
+            router.reload()
+          }
+        })
       })
-    })
-    .catch((err) => {
-      Swal.fire({
-        title: err.response.data.message,
-        icon: 'error'
+      .catch((err) => {
+        Swal.fire({
+          title: err.response.data.message,
+          icon: 'error'
+        })
       })
-    })
   }
 
   async function getItems() {
@@ -90,29 +90,29 @@ export default function Notice() {
         id
       }
     })
-    .then(() => {
-      Swal.fire({
-        title: '게시글이 정상적으로 삭제되었습니다.',
-        icon: 'success',
-        didClose: () => {
-          router.reload()
-        }
+      .then(() => {
+        Swal.fire({
+          title: '게시글이 정상적으로 삭제되었습니다.',
+          icon: 'success',
+          didClose: () => {
+            router.reload()
+          }
+        })
       })
-    })
-    .catch((err) => {
-      Swal.fire({
-        title: err.response.data.message,
-        icon: 'error',
-        didClose: () => {
-          router.reload()
-        }
+      .catch((err) => {
+        Swal.fire({
+          title: err.response.data.message,
+          icon: 'error',
+          didClose: () => {
+            router.reload()
+          }
+        })
       })
-    })
   }
 
   useEffect(() => {
     getItems();
-  }, [currentpage])
+  }, [router.isReady, currentpage])
 
   return (
     <Container>
@@ -120,23 +120,23 @@ export default function Notice() {
         <Card title="공지사항">
           <b style={{ color: "red" }}>!주의: 공지사항에 글을 쓰면 모든 유저에게 알람이 갑니다.</b>
 
-          <br/><br/>
-          선생님의 말씀을 전해주세요! 
-          <br/><br/>
+          <br /><br />
+          선생님의 말씀을 전해주세요!
+          <br /><br />
           <input className="input" placeholder="제목을 입력해주세요!" value={title} onChange={(e) => setTitle(e.target.value)} />
-          <br/><br/>
-          <SunEditor 
+          <br /><br />
+          <SunEditor
             onChange={sunEditorOnChange}
             getSunEditorInstance={getSunEditorInstance}
             placeholder="게시글을 작성해주세요!"
           />
-          <br/>
+          <br />
           <Button type="submit" text="공지 올리기" color="#5d87ff" fontColor="#fff" onClick={undefined} />
         </Card>
       </form>
 
       {items ? items.map((value: any, index) => (
-        <Card>
+        <Card key={index}>
           <Link href={`/community/post/${value.id}`}>
             <Card title={value.title}>
               createdAt: {value.createdAt}
